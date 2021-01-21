@@ -17,8 +17,6 @@ class MapView extends React.Component{
     
     render(){
         return(
-
-            
             <div>
                 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
                <MapContainer center={this.state.currentLocation} zoom={this.state.zoom} style={{height: 350}}>
@@ -28,10 +26,6 @@ class MapView extends React.Component{
                 />
                </MapContainer>
             </div>
-
-
-
-            
         )
     }
 }

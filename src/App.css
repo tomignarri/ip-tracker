@@ -1,2 +1,23 @@
 
 .leaflet-container {  width: 100vw;  height: 100vh; }
+
+
+.searchBar {
+    display: flex;
+    background-color: aqua;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+.searchTextInput {
+    background-color:brown;
+    border: 1px;
+    width: 100px;
+}
+
+.submitButton {
+    background-color:chartreuse;
+    width: 50px;
+}
