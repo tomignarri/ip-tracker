@@ -5,7 +5,14 @@ import ReactDOM from 'react-dom';
 
 class SearchBar extends React.Component{
 
+
+    constructor(){
+        super();
+        
+     }
+
     onSearchSubmit = () => {
+        console.log("SUBMITING");
         const headers = {
             'apiKey': 'at_SGVjuwbf6VmSgiEm49I9lxFY1Q0FY',
             'ipAddress': '8.8.8.8',
@@ -23,10 +30,13 @@ class SearchBar extends React.Component{
 
     render(){
         return(
-            <div class="searchBar">
+            <div className="searchBar">
                 
-                <div class="searchTextInput">Enter Text</div>
-                <div class="submitButton">Submit</div>
+                <input className="searchTextInput" type="text">
+
+                </input>
+                <button className="submitButton" onClick={() => this.onSearchSubmit()}>Search</button>
+                
             </div>
         )
     }

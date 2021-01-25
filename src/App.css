@@ -12,12 +12,10 @@
 }
 
 .searchTextInput {
-    background-color:brown;
-    border: 1px;
+    border: 1px solid black;;
     width: 100px;
 }
 
 .submitButton {
-    background-color:chartreuse;
     width: 50px;
 }
