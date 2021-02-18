@@ -13,13 +13,13 @@ class SearchBar extends React.Component{
 
     onSearchSubmit = () => {
         console.log("SUBMITING");
-        const proxyurl = "https://cors-anywhere.herokuapp.com/";
+        
         
         const apiKey = 'at_SGVjuwbf6VmSgiEm49I9lxFY1Q0FY';
         const ipAddress = '8.8.8.8';
      
 
-        fetch(proxyurl + 'https://geo.ipify.org/api/v1?apiKey=' + apiKey + '&ipAddress=' + ipAddress)
+        fetch('https://geo.ipify.org/api/v1?apiKey=' + apiKey + '&ipAddress=' + ipAddress)
         .then(async response => {
             const data = await response.json();
             console.log(data);
