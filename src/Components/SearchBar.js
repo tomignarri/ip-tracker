@@ -1,25 +1,26 @@
-import React from 'react';
+import React, { useContext } from "react";
 import '../App.css';
 import ReactDOM from 'react-dom';
 
+import { ipAddressContext } from '../App'
 
-class SearchBar extends React.Component{
+
+function SearchBar(props){
+
+    const {state, dispatch} = useContext(ipAddressContext);
+
+    const changeInputValue = (newValue) => {
+        dispatch({ type: 'UPDATE_INPUT', data: newValue});
+    };
 
 
-    constructor(){
-        super();
-        
-     }
-
-    onSearchSubmit = () => {
+    const onSearchSubmit = (ipAddressQuery) => {
         console.log("SUBMITING");
-        
         
         const apiKey = 'at_SGVjuwbf6VmSgiEm49I9lxFY1Q0FY';
         const ipAddress = '8.8.8.8';
-     
 
-        fetch('https://geo.ipify.org/api/v1?apiKey=' + apiKey + '&ipAddress=' + ipAddress)
+        fetch('https://geo.ipify.org/api/v1?apiKey=' + apiKey + '&ipAddress=' + state.ipAddress)
         .then(async response => {
             const data = await response.json();
             console.log(data);
@@ -27,20 +28,21 @@ class SearchBar extends React.Component{
         .catch(error => {
 
         });
+        //return state.location
     }
 
-    render(){
-        return(
-            <div className="searchBar">
+    return(
+        <div className="searchBar">
                 
-                <input className="searchTextInput" type="text">
-
-                </input>
-                <button className="submitButton" onClick={() => this.onSearchSubmit()}>Search</button>
-                
-            </div>
-        )
-    }
+            <input 
+                className="searchTextInput" 
+                type="text" 
+                onChange={e => onSearchSubmit(e.target.value)}>
+            </input>
+               
+        </div>
+    )
+    
 }
 
 export default SearchBar;
