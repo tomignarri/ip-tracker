@@ -9,7 +9,7 @@ export const ipAddressContext = React.createContext();
 const initialState = {
 
   ipAddress: '',
-  location: '',
+  location: { lat: 52.52437, lng: 13.41053 },
 
 };
 
@@ -35,7 +35,7 @@ function App() {
   
   return (
     <div className="App">
-      <ipAddressContext.Provider>
+      <ipAddressContext.Provider value={{ state, dispatch }}>
         <SearchBar></SearchBar>
         <MapView></MapView>
       </ipAddressContext.Provider>

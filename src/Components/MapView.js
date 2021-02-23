@@ -13,7 +13,6 @@ function MapView(props){
     const {state, dispatch} = useContext(ipAddressContext);
 
     const changeInputValue = (newValue) => {
-
         dispatch({ type: 'UPDATE_INPUT', data: newValue,});
     };
 
