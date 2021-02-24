@@ -15,12 +15,11 @@ function SearchBar(props){
 
 
     const onSearchSubmit = (ipAddressQuery) => {
-        console.log("SUBMITING");
+        console.log("SUBMITING", ipAddressQuery);
         
         const apiKey = 'at_SGVjuwbf6VmSgiEm49I9lxFY1Q0FY';
-        const ipAddress = '8.8.8.8';
-
-        fetch('https://geo.ipify.org/api/v1?apiKey=' + apiKey + '&ipAddress=' + state.ipAddress)
+        
+        fetch('https://geo.ipify.org/api/v1?apiKey=' + apiKey + '&ipAddress=' + ipAddressQuery)
         .then(async response => {
             const data = await response.json();
             console.log(data);
@@ -33,13 +32,17 @@ function SearchBar(props){
 
     return(
         <div className="searchBar">
-                
-            <input 
-                className="searchTextInput" 
-                type="text" 
-                onChange={e => onSearchSubmit(e.target.value)}>
-            </input>
-               
+
+            <form>
+                <input 
+                    className="searchTextInput" 
+                    id="searchContent"
+                    type="text"
+                    placeholder="Search..">
+                </input>
+                <button type="submit" onClick={e => onSearchSubmit(document.getElementById('searchContent').value)}>Search</button> 
+            </form>  
+            
         </div>
     )
     
