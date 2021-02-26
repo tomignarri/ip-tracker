@@ -23,7 +23,7 @@ function SearchBar(props){
         })
         .then(async response => {
             const data = await response.json();
-            console.log(data);
+            console.log(data.location);
         })
         .catch(error => {
             console.log(error)
