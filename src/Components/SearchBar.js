@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import '../App.css';
-import ReactDOM from 'react-dom';
 
 import { ipAddressContext } from '../App'
 
@@ -19,13 +18,15 @@ function SearchBar(props){
         
         const apiKey = 'at_SGVjuwbf6VmSgiEm49I9lxFY1Q0FY';
         
-        fetch('https://geo.ipify.org/api/v1?apiKey=' + apiKey + '&ipAddress=' + ipAddressQuery)
+        fetch('https://geo.ipify.org/api/v1?apiKey=' + apiKey + '&ipAddress=' + ipAddressQuery,{
+            
+        })
         .then(async response => {
             const data = await response.json();
             console.log(data);
         })
         .catch(error => {
-
+            console.log(error)
         });
         //return state.location
     }
@@ -40,7 +41,7 @@ function SearchBar(props){
                     type="text"
                     placeholder="Search..">
                 </input>
-                <button type="submit" onClick={e => onSearchSubmit(document.getElementById('searchContent').value)}>Search</button> 
+                <button type="button" onClick={e => onSearchSubmit(document.getElementById('searchContent').value)}>Search</button> 
             </form>  
             
         </div>
