@@ -8,9 +8,9 @@ function SearchBar(props){
 
     const {state, dispatch} = useContext(ipAddressContext);
 
-    const changeInputValue = (newValue) => {
-        dispatch({ type: 'UPDATE_INPUT', data: newValue});
-    };
+    //const changeInputValue = (newValue) => {
+    //    dispatch({ type: 'UPDATE_INPUT', data: newValue});
+    //};
 
 
     const onSearchSubmit = (ipAddressQuery) => {
@@ -23,7 +23,10 @@ function SearchBar(props){
         })
         .then(async response => {
             const data = await response.json();
-            console.log(data.location);
+            //console.log(data.location);
+            dispatch({ type: 'UPDATE_LOCATION', data: data.location});
+            console.log("state!!!", state.locationData);
+            //dispatch happens here
         })
         .catch(error => {
             console.log(error)

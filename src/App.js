@@ -10,14 +10,15 @@ const initialState = {
 
   ipAddress: '',
   location: { lat: 52.52437, lng: 13.41053 },
+  locationData: '',
 
 };
 
 function reducer(state, action) {
   switch (action.type) {
-      case 'UPDATE_INPUT':
+      case 'UPDATE_LOCATION':
           return {
-              inputText: action.data
+              locationData: action.data
           };
 
 
