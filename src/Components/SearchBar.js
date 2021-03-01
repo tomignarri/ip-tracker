@@ -25,6 +25,7 @@ function SearchBar(props){
             const data = await response.json();
             //console.log(data.location);
             dispatch({ type: 'UPDATE_LOCATION', data: data.location});
+            
             console.log("state!!!", state.locationData);
             //dispatch happens here
         })

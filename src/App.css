@@ -12,10 +12,22 @@
 }
 
 .searchTextInput {
-    border: 1px solid black;;
+    border: 1px solid black;
     width: 100px;
 }
 
 .submitButton {
     width: 50px;
+}
+
+.displayBox {
+    height: 50px;
+    border: 1px solid black;
+    width: 70px;
+}
+
+#searchDisplay {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }

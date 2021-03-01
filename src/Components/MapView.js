@@ -14,15 +14,12 @@ function MapView(props){
 
     const {state, dispatch} = useContext(ipAddressContext);
 
-    const changeInputValue = (newValue) => {
-        dispatch({ type: 'UPDATE_INPUT', data: newValue,});
-    };
 
     return(
         <div>
             <Display></Display>
             <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
-            <MapContainer center={state.location} zoom={zoom} style={{height: 350}}>
+            <MapContainer center={state.locationCoordinates} zoom={zoom} style={{height: 350}}>
             <TileLayer
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
