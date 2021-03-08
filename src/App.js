@@ -9,7 +9,7 @@ export const ipAddressContext = React.createContext();
 const initialState = {
 
   ipAddress: '',
-  locationCoordinates: { lat: 52.52437, lng: 13.41053 },
+  locationCoordinates: { lat: 58.52437, lng: 13.41053 },
   locationData: '',
 
 };
@@ -19,6 +19,7 @@ function reducer(state, action) {
       case 'UPDATE_LOCATION':
           return {
               locationData: action.data,
+              locationCoordinates:{lat: action.data.lat, lng: action.data.lng},
           };
 
 

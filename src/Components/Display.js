@@ -13,7 +13,7 @@ function Display(props){
     return(
         <div id="searchDisplay">
             <div className="displayBox">{state.locationData.country}</div>
-            <div className="displayBox"></div>
+            <div className="displayBox">{state.locationCoordinates.lat}{state.locationCoordinates.lng}</div>
             <div className="displayBox"></div>
             <div className="displayBox"></div>
         </div>

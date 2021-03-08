@@ -27,6 +27,7 @@ function SearchBar(props){
             dispatch({ type: 'UPDATE_LOCATION', data: data.location});
             
             console.log("state!!!", state.locationData);
+            console.log("coordinates!!!", state.locationCoordinates);
             //dispatch happens here
         })
         .catch(error => {
