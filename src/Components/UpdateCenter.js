@@ -1,17 +1,17 @@
 import React, { useState, useContext } from 'react';
-import { MapContainer, TileLayer } from 'react-leaflet';
+import { MapContainer, TileLayer, useMap } from 'react-leaflet';
 import '../App.css';
 
 import { ipAddressContext } from '../App'
 
 
-function UpdateCenter({ center, zoom }) {
-
-  const {state, dispatch} = useContext(ipAddressContext);
-
+function UpdateCenter(center) {
+  console.log("center!!!", center.center); 
   const map = useMap();
-  map.setView(state.locationCoordinates, zoom);
+  map.flyTo(center.center, 12);
   return null;
+  
+  
 }
 
 
