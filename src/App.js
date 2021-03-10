@@ -11,6 +11,8 @@ const initialState = {
   ipAddress: '',
   locationCoordinates: { lat: 58.52437, lng: 13.41053 },
   locationData: '',
+  isp: '',
+  timezone: ''
 
 };
 
@@ -18,8 +20,11 @@ function reducer(state, action) {
   switch (action.type) {
       case 'UPDATE_LOCATION':
           return {
-              locationData: action.data,
-              locationCoordinates:{lat: action.data.lat, lng: action.data.lng},
+              timezone: action.data.location.timezone,
+              isp: action.data.isp,
+              ipAddress: action.data.ip,
+              locationData: action.data.location,
+              locationCoordinates:{lat: action.data.location.lat, lng: action.data.location.lng},
           };
 
 

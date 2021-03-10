@@ -6,7 +6,6 @@ import { ipAddressContext } from '../App'
 
 
 function UpdateCenter(center) {
-  console.log("center!!!", center.center); 
   const map = useMap();
   map.flyTo(center.center, 12);
   return null;

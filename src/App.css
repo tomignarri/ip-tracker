@@ -21,13 +21,22 @@
 }
 
 .displayBox {
-    height: 50px;
+    height: 80px;
     border: 1px solid black;
-    width: 70px;
+    width: 100px;
 }
 
 #searchDisplay {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+p {
+    font-size: 12px;
+    margin: 5px;
+}
+
+h4 {
+    margin: 5px;
 }
