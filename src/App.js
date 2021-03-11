@@ -1,13 +1,14 @@
 import MapView from './Components/MapView'
 import SearchBar from './Components/SearchBar'
+import Display from './Components/Display';
 import React, {useReducer} from 'react';
 import './App.css';
 
 export const ipAddressContext = React.createContext();
 
-// Set up Initial State
 const initialState = {
 
+  // loading state maybe?
   ipAddress: '',
   locationCoordinates: { lat: 58.52437, lng: 13.41053 },
   locationData: '',
@@ -26,8 +27,6 @@ function reducer(state, action) {
               locationData: action.data.location,
               locationCoordinates:{lat: action.data.location.lat, lng: action.data.location.lng},
           };
-
-
       default:
           return initialState;
   }
@@ -43,7 +42,10 @@ function App() {
   return (
     <div className="App">
       <ipAddressContext.Provider value={{ state, dispatch }}>
-        <SearchBar></SearchBar>
+        <div className="uiDisplay">
+          <SearchBar></SearchBar>
+          <Display></Display>
+        </div>
         <MapView></MapView>
       </ipAddressContext.Provider>
         
