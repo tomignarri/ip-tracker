@@ -13,7 +13,8 @@ const initialState = {
   locationCoordinates: { lat: 58.52437, lng: 13.41053 },
   locationData: '',
   isp: '',
-  timezone: ''
+  timezone: '',
+  loadingIcon: false,
 
 };
 

@@ -1,16 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import '../App.css';
 
 import { ipAddressContext } from '../App'
+import LoadingIcon from "./LoadingIcon";
 
 
 function SearchBar(){
 
     const {state, dispatch} = useContext(ipAddressContext);
 
+    const [isLoading, setIsLoading] = useState(false); 
 
     const onSearchSubmit = (ipAddressQuery) => {
         console.log("SUBMITING", ipAddressQuery);
+        
+        setIsLoading(true);
         
         const apiKey = 'at_SGVjuwbf6VmSgiEm49I9lxFY1Q0FY';
         
@@ -20,13 +24,15 @@ function SearchBar(){
         .then(async response => {
             const data = await response.json();
             dispatch({ type: 'UPDATE_LOCATION', data: data});
+            setIsLoading(false);
             console.log("data!!!", data);
-            console.log("coordinates!!!", state.locationCoordinates);
+            console.log("loading!!!", isLoading);
            
         })
         .catch(error => {
             console.log(error)
         });
+        
     }
 
     return(
@@ -43,7 +49,8 @@ function SearchBar(){
                     className="submitButton" 
                     type="button" 
                     onClick={e => onSearchSubmit(document.getElementById('searchContent').value)}>Search
-                </button> 
+                </button>
+                {isLoading ? <LoadingIcon></LoadingIcon> : <div>found it </div>} 
             </form>  
             
         </div>

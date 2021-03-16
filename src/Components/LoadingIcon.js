@@ -1,9 +1,10 @@
 import React from "react";
+import '../App.css';
 
 const LoadingIcon = () => {
   return (
-    <div>
-        
+    <div className="loadingIcon">
+        LOOKING
     </div>
   );
 };

@@ -52,3 +52,7 @@ p {
 h4 {
     margin: 5px;
 }
+
+.loadingIcon {
+    font-size: 20px;
+}
