@@ -11,11 +11,32 @@ function SearchBar(){
 
     const [isLoading, setIsLoading] = useState(false); 
 
+    const isValidIp = (ipAddressQuery) =>{
+        var splitIp = ipAddressQuery.split(".");
+
+        if(splitIp.length != 4){
+            return false;
+        }
+
+        splitIp.forEach(ipPortion => {
+            
+            //Write a case for nan
+
+            ipPortion = parseInt(ipPortion);
+            if(ipPortion < 0 && ipPortion > 255){
+                return false;
+            }
+        });
+    }
+    
+
     const onSearchSubmit = (ipAddressQuery) => {
         console.log("SUBMITING", ipAddressQuery);
         
         setIsLoading(true);
         
+
+
         const apiKey = 'at_SGVjuwbf6VmSgiEm49I9lxFY1Q0FY';
         
         fetch('https://geo.ipify.org/api/v1?apiKey=' + apiKey + '&ipAddress=' + ipAddressQuery,{
