@@ -9,17 +9,9 @@ import UpdateCenter from './UpdateCenter';
 
 
 
-
-
 function MapView(){
 
-   
-
     const {state, dispatch} = useContext(ipAddressContext);
-
-   
-   
-    
 
     return(
         <div>

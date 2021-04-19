@@ -7,15 +7,12 @@ import './App.css';
 export const ipAddressContext = React.createContext();
 
 const initialState = {
-
-  // loading state maybe?
   ipAddress: '',
   locationCoordinates: { lat: 58.52437, lng: 13.41053 },
   locationData: '',
   isp: '',
   timezone: '',
   loadingIcon: false,
-
 };
 
 function reducer(state, action) {

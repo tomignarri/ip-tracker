@@ -20,7 +20,7 @@ function SearchBar(){
         }
 
         for(var i = 0; i < splitIp.length; i++){
-            if(splitIp[i] > 255){
+            if(splitIp[i] > 255 || splitIp[i] < 0 || isNaN(splitIp[i])){
                 return false;
             }
         };
@@ -30,8 +30,6 @@ function SearchBar(){
 
     const onSearchSubmit = (ipAddressQuery) => {
         console.log("SUBMITING", ipAddressQuery);
-        
-        
         
         if(!isValidIp(ipAddressQuery)){
             alert("invalid ip address");
