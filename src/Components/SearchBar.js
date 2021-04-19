@@ -13,29 +13,32 @@ function SearchBar(){
 
     const isValidIp = (ipAddressQuery) =>{
         var splitIp = ipAddressQuery.split(".");
-
-        if(splitIp.length != 4){
+        console.log("SPLIT IP  ", splitIp);
+        
+        if(splitIp.length !== 4){
             return false;
         }
 
-        splitIp.forEach(ipPortion => {
-            
-            //Write a case for nan
-
-            ipPortion = parseInt(ipPortion);
-            if(ipPortion < 0 && ipPortion > 255){
+        for(var i = 0; i < splitIp.length; i++){
+            if(splitIp[i] > 255){
                 return false;
             }
-        });
+        };
+        return true;
     }
     
 
     const onSearchSubmit = (ipAddressQuery) => {
         console.log("SUBMITING", ipAddressQuery);
         
-        setIsLoading(true);
         
+        
+        if(!isValidIp(ipAddressQuery)){
+            alert("invalid ip address");
+            return;
+        }
 
+        setIsLoading(true);
 
         const apiKey = 'at_SGVjuwbf6VmSgiEm49I9lxFY1Q0FY';
         
