@@ -4,7 +4,6 @@ import '../App.css';
 import './Display'
 
 import { ipAddressContext } from '../App'
-import Display from './Display';
 import UpdateCenter from './UpdateCenter';
 
 
