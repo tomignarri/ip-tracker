@@ -24,7 +24,7 @@ function SearchBar(){
                 <button 
                     className="submitButton" 
                     type="button" 
-                    onClick={e => useIpSearch(document.getElementById('searchContent').value)}>Search
+                    onClick={useIpSearch(document.getElementById('searchContent').value)}>Search
                 </button>
                 {isLoading ? <LoadingIcon></LoadingIcon> : <div>found it </div>} 
             </form>  
