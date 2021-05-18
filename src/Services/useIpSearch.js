@@ -2,62 +2,64 @@ import React, { useContext, useState, useEffect } from "react";
 import { ipAddressContext } from '../App'
 
 
+    const useIpSearch = (ipAddressQuery) => {
 
+        const [isLoading, setIsLoading] = useState(false); 
+        const {state, dispatch} = useContext(ipAddressContext);
 
-
-    const isValidIp = (ipAddressQuery) =>{
+        const isValidIp = (ipAddressQuery) =>{
        
-        var splitIp = ipAddressQuery.split(".");
-        console.log("SPLIT IP  ", splitIp);
-        
-        if(splitIp.length !== 4){
-            return false;
-        }
-
-        for(var i = 0; i < splitIp.length; i++){
-            if(splitIp[i] > 255 || splitIp[i] < 0 || isNaN(splitIp[i])){
+            var splitIp = ipAddressQuery.split(".");
+            console.log("SPLIT IP  ", splitIp);
+            
+            if(splitIp.length !== 4){
                 return false;
             }
-        };
-        return true;
-    }
-
-    const useIpSearch = (ipAddressQuery) => {
-        
-        useEffect(() => {
-            const OnSearchSubmit = (ipAddressQuery) => {
-
-                console.log("SUBMITING", ipAddressQuery);
-                const {state, dispatch} = useContext(ipAddressContext);
-                const [isLoading, setIsLoading] = useState(false); 
-                
-                if(!isValidIp(ipAddressQuery)){
-                    alert("invalid ip address");
-                    return;
+    
+            for(var i = 0; i < splitIp.length; i++){
+                if(splitIp[i] > 255 || splitIp[i] < 0 || isNaN(splitIp[i])){
+                    return false;
                 }
+            };
+            return true;
+        }
+
         
-                setIsLoading(true);
         
-                const apiKey = 'at_SGVjuwbf6VmSgiEm49I9lxFY1Q0FY';
+        const OnSearchSubmit = (ipAddressQuery) => {
+
+            console.log("SUBMITING", ipAddressQuery);
                 
-                fetch('https://geo.ipify.org/api/v1?apiKey=' + apiKey + '&ipAddress=' + ipAddressQuery,{
-                    
-                })
-                .then(async response => {
-                    const data = await response.json();
-                    dispatch({ type: 'UPDATE_LOCATION', data: data});
-                    setIsLoading(false);
-                    console.log("data!!!", data);
-                    console.log("loading!!!", isLoading);
                 
-                })
-                .catch(error => {
-                    console.log(error)
-                });
-        
+                
+            if(!isValidIp(ipAddressQuery)){
+                alert("invalid ip address");
+                return;
             }
-            OnSearchSubmit(ipAddressQuery);
-        }, []);
+        
+            setIsLoading(true);
+        
+            const apiKey = 'at_SGVjuwbf6VmSgiEm49I9lxFY1Q0FY';
+                
+            fetch('https://geo.ipify.org/api/v1?apiKey=' + apiKey + '&ipAddress=' + ipAddressQuery,{
+                    
+            })
+            .then(async response => {
+                const data = await response.json();
+                dispatch({ type: 'UPDATE_LOCATION', data: data});
+                setIsLoading(false);
+                console.log("data!!!", data);
+                console.log("loading!!!", isLoading);
+                
+            })
+            .catch(error => {
+                console.log(error)
+            });
+        
+        }
+      
+
+        return { isLoading, OnSearchSubmit };
     
     };
     

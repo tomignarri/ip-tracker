@@ -9,7 +9,10 @@ import useIpSearch from "../Services/useIpSearch"
 function SearchBar(){      
    
 
-    //const { OnSearchSubmit, isLoading } = useIpSearch();
+    const { OnSearchSubmit, isLoading } = useIpSearch();
+    
+   
+
 
     return(
         <div className="searchBar">
@@ -24,7 +27,7 @@ function SearchBar(){
                 <button 
                     className="submitButton" 
                     type="button" 
-                    onClick={useIpSearch(document.getElementById('searchContent').value)}>Search
+                    onClick={() => OnSearchSubmit(document.getElementById('searchContent').value)}>Search
                 </button>
                 {isLoading ? <LoadingIcon></LoadingIcon> : <div>found it </div>} 
             </form>  
